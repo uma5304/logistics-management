@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="booking-container">
+
+    <div class="booking-card">
+
+        <h2>🚛 Book Your Shipment</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <p class="success-msg">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <h3>Customer Details</h3>
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="text" name="phone" placeholder="Phone" required>
+            <input type="text" name="city" placeholder="City" required>
+
+            <h3>Order Details</h3>
+            <input type="text" name="pickup" placeholder="Pickup Location" required>
+            <input type="text" name="delivery" placeholder="Delivery Location" required>
+            <input type="text" name="goods" placeholder="Goods Type" required>
+            <input type="number" name="weight" placeholder="Weight" required>
+
+            <h3>Select Vehicle 🚛</h3>
+            <select name="vehicle" required>
+                <option value="">-- Select Vehicle --</option>
+
+                {% for v in vehicles %}
+                    <option value="{{ v.id }}">
+                         {{ v.vehicle_type }}-{{v.vehicle_id}}
+                    </option>
+                {% empty %}
+                    <option>No vehicles available</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Submit Booking</button>
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

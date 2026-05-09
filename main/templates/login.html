@@ -1,0 +1,27 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<div class="auth-container">
+    <form method="POST" class="auth-form">
+        {% csrf_token %}
+
+        <h2>Login</h2>
+
+       <input type="text" name="username"
+       placeholder="Username"
+       autocomplete="new-password">
+
+      <input type="password" name="password"
+       placeholder="Password"
+       autocomplete="new-password">
+        <button type="submit">Login</button>
+
+        <p>No account? <a href="/register/">Register</a></p>
+
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color:red;">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    </form>
+</div>

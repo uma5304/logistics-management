@@ -1,0 +1,22 @@
+<h2 class="title">Track Shipment 🚛</h2>
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<form class="t" method="POST">
+    {% csrf_token %}
+    <input type="text" name="booking_id" placeholder="Enter Booking ID">
+    <button type="submit">Track</button>
+</form>
+
+{% if data %}
+    <h3>Status: {{ data.shipment.status }}</h3>
+
+    <ul>
+        <li>✔️ Order Confirmed</li>
+        <li>✔️ Vehicle Assigned</li>
+        <li>🚛 In Transit</li>
+        <li>📦 Delivered</li>
+    </ul>
+{% elif data == None %}
+    <p>No data found</p>
+{% endif %}

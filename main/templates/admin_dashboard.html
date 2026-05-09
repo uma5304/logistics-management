@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="admin-dashboard">
+
+    <div class="admin-box">
+        <h2>⚙️ Admin Panel</h2>
+
+        <div class="admin-buttons">
+            <a href="{% url 'admin_customers' %}" class="btn">👤 Customers</a>
+            <a href="{% url 'admin_orders' %}" class="btn">📦 Orders</a>
+           <a href="{% url 'admin_vehicles' %}" class="btn">🚛 Vehicles</a>    
+          </div>
+    </div>
+
+</div>
+
+{% endblock %}

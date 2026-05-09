@@ -1,0 +1,25 @@
+<h2 class="title">orders List</h2>
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<div class="table-container">
+<table>
+    <tr>
+        <th>Booking Id</th>
+        <th>Customer Name</th>
+        <th>Pickup</th>
+        <th>Delivery</th>
+        
+    </tr>
+
+    {% for c in data %}
+    <tr>
+        <td>{{ c.booking_id }}</td>
+        <td>{{ c.customer.name }}</td>
+        <td>{{ c.pickup}}</td>
+        <td>{{ c.delivery }}</td>
+        
+    </tr>
+    {% endfor %}
+</table>
+</div>

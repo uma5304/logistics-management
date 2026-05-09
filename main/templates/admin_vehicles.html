@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="vehicle-page">
+
+    <!--  TITLE (TOP) -->
+    <h1 class="page-title">🚛 Vehicle Management</h1>
+
+    <!--  ADD VEHICLE (CENTER BOX) -->
+    <div class="form-box">
+        <h3>Add Vehicle</h3>
+
+     <form method="POST">
+           {% csrf_token %}
+
+        <input type="text" name="vehicle_id" placeholder="Vehicle ID" required>
+        <input type="text" name="type" placeholder="Vehicle Type" required>
+        <input type="number" name="capacity" placeholder="Capacity" required>
+
+            <button type="submit">Add Vehicle</button>
+        </form>
+    </div>
+
+    <!--  TABLE (BOTTOM) -->
+    <div class="table-box">
+<table>
+<tr>
+    <th>ID</th>
+    <th>Type</th>
+    <th>Capacity</th>
+</tr>
+
+{% for v in vehicles %}
+<tr>
+    <td>{{ v.vehicle_id }}</td>   <!--  முக்கியம் -->
+    <td>{{ v.vehicle_type }}</td>
+    <td>{{ v.capacity }}</td>
+</tr>
+{% empty %}
+<tr>
+    <td colspan="3">No Data</td>
+</tr>
+{% endfor %}
+
+</table>
+    </div>
+
+</div>
+
+{% endblock %}

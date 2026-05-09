@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="success-container">
+
+    <!-- SUCCESS BOX -->
+    <div class="success-box" id="successBox">
+        <h2> Booking Successful</h2>
+
+        <p>Your Booking ID:</p>
+        <h1>{{ id }}</h1>
+
+        <p class="wait-text">Please wait... Redirecting to feedback</p>
+    </div>
+
+    <!-- FEEDBACK BOX -->
+    <div class="success-box" id="feedbackBox" style="display:none;">
+        <h2>⭐ Give Feedback</h2>
+
+        <form method="POST" action="/feedback/">
+            {% csrf_token %}
+            <input type="hidden" name="booking_id" value="{{ id }}">
+
+            <textarea name="feedback" placeholder="Enter your feedback" required></textarea>
+
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+
+</div>
+
+<script>
+    // after 3 sec show feedback
+    setTimeout(function() {
+        document.getElementById("successBox").style.display = "none";
+        document.getElementById("feedbackBox").style.display = "block";
+    }, 3000);
+</script>
+
+{% endblock %}

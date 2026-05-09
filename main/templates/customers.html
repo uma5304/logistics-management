@@ -1,0 +1,19 @@
+<h2 class="title">Customer Feedback</h2>
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<div class="table-container">
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Feedback</th>
+    </tr>
+
+    {% for c in data %}
+    <tr>
+        <td>{{ c.name }}</td>
+        <td>{{ c.feedback }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>

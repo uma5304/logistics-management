@@ -1,0 +1,21 @@
+<h2 class="title">vehicles List</h2>
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<div class="table-container">
+<table>
+    <tr>
+        <th>Number</th>
+        <th>Type</th>
+        <th>capacity</th>
+    </tr>
+
+    {% for c in data %}
+    <tr>
+        <td>{{ c.vehicle_id }}</td>
+        <td>{{ c.vehicle_type }}</td>
+        <td>{{ c.capacity }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>

@@ -1,0 +1,22 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<div class="auth-container">
+    <form method="POST" class="auth-form">
+        {% csrf_token %}
+
+        <h2>Register</h2>
+
+        <input type="text" name="username"
+       placeholder="Username"
+       autocomplete="new-password">
+
+      <input type="password" name="password"
+       placeholder="Password"
+       autocomplete="new-password">
+
+        <button type="submit">Register</button>
+
+        <p>Already account? <a href="/login/">Login</a></p>
+    </form>
+</div>

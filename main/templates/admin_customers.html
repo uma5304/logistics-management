@@ -1,0 +1,30 @@
+<div class="customer-page">
+
+    <!--  TITLE (TOP) -->
+    <h1 class="page-title">Customer Management</h1>
+
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<div class="table-box">
+    <table>
+        <tr>
+            <th>Booking ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>City</th>
+            <th>Feedback</th>
+        </tr>
+
+        {% for c in data %}
+        <tr>
+            <td>{{ c.booking_id }}</td>
+            <td>{{ c.name }}</td>
+            <td>{{ c.phone }}</td>
+            <td>{{ c.city }}</td>
+            <td>{{ c.feedback }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</div>

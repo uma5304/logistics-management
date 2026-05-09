@@ -1,0 +1,8 @@
+<h2>Feedback</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    <textarea name="feedback" placeholder="Enter your feedback"></textarea>
+    <br><br>
+    <button type="submit">Submit</button>
+</form>

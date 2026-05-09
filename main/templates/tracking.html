@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="tracking-page">
+
+    <div class="tracking-box">
+
+        <h2>📦 Shipment Tracking</h2>
+
+        <!-- INPUT -->
+        <input type="text" id="bookingId" placeholder="Enter Booking ID">
+
+        <button onclick="startTracking()">Track</button>
+
+        <!-- RESULT -->
+        <div id="result" style="display:none;">
+
+            <p id="showId"></p>
+
+            <!-- PROGRESS -->
+            <div class="progress-container">
+                <div id="progress-bar"></div>
+            </div>
+
+            <p id="status">Waiting...</p>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+function startTracking() {
+    let id = document.getElementById("bookingId").value;
+
+    if (id === "") {
+        alert("Enter Booking ID");
+        return;
+    }
+
+    document.getElementById("result").style.display = "block";
+    document.getElementById("showId").innerText = "Tracking ID: " + id;
+
+    let progress = 0;
+    let steps = [
+        "Order Placed",
+        "Picked Up",
+        "In Transit",
+        "Out for Delivery",
+        "Delivered"
+    ];
+
+    let i = 0;
+
+    function move() {
+        if (progress <= 100) {
+            document.getElementById("progress-bar").style.width = progress + "%";
+            document.getElementById("status").innerText = steps[i];
+
+            progress += 25;
+            i++;
+
+            setTimeout(move, 20000);
+        }
+    }
+
+    move();
+}
+</script>
+
+{% endblock %}

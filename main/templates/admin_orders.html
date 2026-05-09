@@ -1,0 +1,29 @@
+<div class="order-page">
+
+    <!--  TITLE (TOP) -->
+    <h1 class="page-title">Order Management</h1>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<div class="table-box">
+    <table>
+
+
+<tr>
+<th>ID</th>
+<th>Pickup</th>
+<th>Delivery</th>
+<th>Goods</th>
+</tr>
+
+{% for o in data %}
+<tr>
+<td>{{ o.booking_id }}</td>
+<td>{{ o.pickup }}</td>
+<td>{{ o.delivery }}</td>
+<td>{{ o.goods }}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+</div>
